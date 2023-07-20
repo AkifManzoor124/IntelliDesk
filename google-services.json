@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "408162741751",
+    "project_id": "intellidesk-71955",
+    "storage_bucket": "intellidesk-71955.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408162741751:android:99286f9e0ed5761a0f52f2",
+        "android_client_info": {
+          "package_name": "com.intelliDesk.intelliDesk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408162741751-gnm7mmr1k65n2t4ign388sosudfr980t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMIRq4VUhkj9tA-F0mBXnJITLR4qestVI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408162741751-gnm7mmr1k65n2t4ign388sosudfr980t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
