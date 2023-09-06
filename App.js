@@ -13,7 +13,6 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
       <NavigationContainer>
         <Tab.Navigator>
           <Tab.Screen name="Home" component={Home} />
@@ -22,7 +21,6 @@ export default function App() {
           <Tab.Screen name="Settings" component={Settings} />
         </Tab.Navigator>
       </NavigationContainer>
-    </View>
   );
 }
 

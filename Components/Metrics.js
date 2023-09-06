@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function Home() {
+export default function Metrics() {
   return (
     <View style={styles.container}>
-        <Text>Home</Text>
+        <Text>Metrics</Text>
     </View>
   );
 }

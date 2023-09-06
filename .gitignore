@@ -11,6 +11,8 @@ npm-debug.*
 *.orig.*
 web-build/
 
+Standing_Desk_App/
+
 # macOS
 .DS_Store
 
