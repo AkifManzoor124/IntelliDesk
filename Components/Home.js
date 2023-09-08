@@ -33,8 +33,7 @@ export default function Home() {
 
       </View>
 
-      {/* <View style={styles.circle} /> */}
-      <View style={{top: -150 - pos*100, left: windowWidth/2, width: 100, height: 100, borderRadius: 100 / 2, backgroundColor: "pink"}} />
+      <View style={[styles.circle, {top: -150 - pos*100}]} />
 
     </View>
   );
@@ -59,7 +58,6 @@ const styles = StyleSheet.create({
   //   backgroundColor: "green",
   // },
   circle: {
-    // top: -150 + {pos},
     left: windowWidth/2,
     width: 100,
     height: 100,
