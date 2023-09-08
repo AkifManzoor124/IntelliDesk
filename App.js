@@ -3,10 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Authentication from './Components/Authentication';
 import Home from './Components/Home';
-import RGBControl from './Components/RGBControl';
-import Metrics from './Components/Metrics';
 import Settings from './Components/Settings';
 
 const Tab = createBottomTabNavigator();
@@ -16,8 +13,6 @@ export default function App() {
       <NavigationContainer>
         <Tab.Navigator>
           <Tab.Screen name="Home" component={Home} />
-          <Tab.Screen name="RGBControl" component={RGBControl} />
-          <Tab.Screen name="Metrics" component={Metrics} />
           <Tab.Screen name="Settings" component={Settings} />
         </Tab.Navigator>
       </NavigationContainer>
