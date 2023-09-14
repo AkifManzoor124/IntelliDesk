@@ -77,19 +77,28 @@ export default function Home() {
           <Text> Kumberly's Standing Desk </Text>
         </View>
         <View style={styles.slider}>
-          <View style={{backgroundColor: 'red', flex: 0.3, borderBottomRightRadius: 50}} >
-              <Slider
-                style={{width: 200, height: 40}}
-                minimumValue={0}
-                maximumValue={1}
-                minimumTrackTintColor="#FFFFFF"
-                maximumTrackTintColor="#000000"
-                onValueChange={slideHandler}
-              />
-              <Text> {pos} </Text>
-              {/* create a standing desk with shapes and move it with a slide bar */}
+  
+          {/* add table top  */}
+
+          <View style={{justifyContent:'space-between', flexDirection:'row', backgroundColor: 'grey', top: pos*75}} >
+            <View style={[styles.standingDeskLegTop, {left: 5}]}/>
+            <View style={[styles.standingDeskLegTop, {right: 5}]}/>
           </View>
-          <View style={[styles.circle, {top: -150 - pos*100}]} />
+          <View style={{justifyContent:'space-between', flexDirection:'row', backgroundColor: 'grey'}}>
+            <View style={[styles.standingDeskLegBottom]}/>
+            <View style={[styles.standingDeskLegBottom]}/>
+          </View>
+          <View>
+            <Text> {pos*75} </Text>
+            <Slider
+              style={{width: 200, height: 40}}
+              minimumValue={0}
+              maximumValue={1}
+              minimumTrackTintColor="#FFFFFF"
+              maximumTrackTintColor="#000000"
+              onValueChange={slideHandler}
+            />
+          </View>
         </View>
         <View style={styles.tableButtons} >
           <Text> P1 </Text>
@@ -102,8 +111,6 @@ export default function Home() {
     </View>
   );
 }
-
-const windowWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   container: {
@@ -208,12 +215,14 @@ const styles = StyleSheet.create({
   table: {
     backgroundColor: 'blue', 
   },
-  circle: {
-    position: "relative",
-    left: windowWidth/2,
+  standingDeskLegTop: {
+    width: 10,
+    height: 75,
+    backgroundColor: "pink",
+  },
+  standingDeskLegBottom: {
     width: 20,
-    height: 20,
-    borderRadius: 100 / 2,
+    height: 75,
     backgroundColor: "pink",
   },
   tableButtons: {
