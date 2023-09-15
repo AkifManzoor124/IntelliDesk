@@ -72,41 +72,47 @@ export default function Home() {
         </View>
       </View>
       <View style={styles.tableControl} >
-        <View style={styles.table} >
-          <Text> Bluetooth Icon </Text>
-          <Text> Kumberly's Standing Desk </Text>
-        </View>
         <View style={styles.slider}>
-  
-          {/* add table top  */}
 
-          <View style={{justifyContent:'space-between', flexDirection:'row', backgroundColor: 'grey', top: pos*75}} >
-            <View style={[styles.standingDeskLegTop, {left: 5}]}/>
-            <View style={[styles.standingDeskLegTop, {right: 5}]}/>
+          <View style={{justifyContent:'center', flexDirection:'row', top: pos*75}} >
+            <View style={[styles.standingDeskTableTop, styles.standingDesk]}/>
           </View>
-          <View style={{justifyContent:'space-between', flexDirection:'row', backgroundColor: 'grey'}}>
-            <View style={[styles.standingDeskLegBottom]}/>
-            <View style={[styles.standingDeskLegBottom]}/>
+
+          <View style={{justifyContent:'space-between', flexDirection:'row', top: pos*75}} >
+            <View style={[styles.standingDeskLegTop, styles.standingDesk, {left: 5}]}/>
+            <View style={[styles.standingDeskLegTop, styles.standingDesk, {right: 5}]}/>
           </View>
-          <View>
-            <Text> {pos*75} </Text>
-            <Slider
-              style={{width: 200, height: 40}}
-              minimumValue={0}
-              maximumValue={1}
-              minimumTrackTintColor="#FFFFFF"
-              maximumTrackTintColor="#000000"
-              onValueChange={slideHandler}
-            />
+
+          <View style={{justifyContent:'space-between', flexDirection:'row'}}>
+            <View style={[styles.standingDeskLegBottom, styles.standingDesk, {left: 2.5}]}/>
+            <View style={[styles.standingDeskLegBottom, styles.standingDesk, {right: 2.5}]}/>
+          </View>
+
+          <View style={styles.table} >
+            <Text> Bluetooth Icon </Text>
+            <Text> Kumberly's Standing Desk </Text>
+          </View>
+
+          {/* <Text> {pos*75} </Text> */}
+
+          <Slider
+            style={{width: 200, height: 40, left: '20%'}}
+            minimumValue={0}
+            maximumValue={1}
+            minimumTrackTintColor="#FFFFFF"
+            maximumTrackTintColor="#000000"
+            onValueChange={slideHandler}
+          />
+
+          <View style={styles.tableButtons} >
+            <Text> P1 </Text>
+            <Text> P2 </Text>
+            <Text> P3 </Text>
+            <Text> P4 </Text>
+            <Text> P5 </Text>
           </View>
         </View>
-        <View style={styles.tableButtons} >
-          <Text> P1 </Text>
-          <Text> P2 </Text>
-          <Text> P3 </Text>
-          <Text> P4 </Text>
-          <Text> P5 </Text>
-        </View>
+      
       </View>
     </View>
   );
@@ -212,18 +218,35 @@ const styles = StyleSheet.create({
   metricHours: {
     fontWeight: 700,
   },
-  table: {
-    backgroundColor: 'blue', 
+  metrics: {
+    flexDirection: 'row',
+    backgroundColor: 'yellow',
+  },
+  tableControl: {
+    width: 350,
+    height: 350,
+    backgroundColor: "red",
+    padding: 30,
+    borderRadius:25
+  },
+  standingDesk: {
+    backgroundColor: "black",
+  },
+  standingDeskTableTop: {
+    width: '105%',
+    height: 10,
   },
   standingDeskLegTop: {
-    width: 10,
+    width: 7,
     height: 75,
-    backgroundColor: "pink",
   },
   standingDeskLegBottom: {
-    width: 20,
+    width: 15,
     height: 75,
-    backgroundColor: "pink",
+    borderRadius: 5
+  },
+  table: {
+    backgroundColor: 'blue', 
   },
   tableButtons: {
     flexDirection: 'row',
