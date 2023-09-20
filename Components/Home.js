@@ -4,6 +4,9 @@ import { Dimensions } from 'react-native'
 
 // Import the image using require
 const bellIcon = require('../assets/bell.png');
+const standingIcon = require('../assets/standing.png');
+const sittingIcon = require('../assets/sitting.png');
+const trendIcon = require('../assets/trend.png');
 
 import Slider from '@react-native-community/slider';
 
@@ -27,12 +30,45 @@ export default function Home() {
           <Image source={bellIcon} style={styles.notificationIcon}/>
         </View>
       </View>
-      <View style={styles.quickMetrics} >
-        <Text> Metrics </Text>
-        <View style={styles.metrics} >
-          <Text> Standing </Text>
-          <Text> Sitting </Text>
-          <Text> Trend </Text>
+      <View style={styles.metricsContainer} >
+        <Text style={styles.metricHeaderText}>METRICS</Text>
+        <View style={styles.metricValuesContainer} >
+          <View style={styles.metricValue}> 
+            <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+              <View style={styles.metricIconContainer}>
+                <Image source={standingIcon} style={[styles.metricsIcon, {width: 32}]}></Image>
+              </View>
+              <View style={{flexDirection: 'row', alignItems: 'baseline'}}>
+                <Text style={[styles.metricHours, {fontSize: 17}]}>6:26</Text>
+                <Text style={[styles.metricHours, {fontSize: 10, paddingLeft: 2}]}>hr</Text>
+              </View>
+            </View>
+            <Text style={{color: '#595959'}}>Standing</Text>  
+          </View>
+          <View style={styles.metricValue}> 
+          <View style={{flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
+            <View style={styles.metricIconContainer}>
+                <Image source={sittingIcon} style={styles.metricsIcon}></Image>
+            </View>
+              <View style={{flexDirection: 'row', alignItems: 'baseline'}}>
+                <Text style={[styles.metricHours, {fontSize: 17}]}>2:26</Text>
+                <Text style={[styles.metricHours, {fontSize: 10, paddingLeft: 2}]}>hr</Text>
+              </View>
+            </View>
+            <Text style={{color: '#595959'}}>Sitting</Text>  
+          </View>
+          <View style={styles.metricValue}> 
+          <View style={{flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
+              <View style={styles.metricIconContainer}>
+                <Image source={trendIcon} style={[styles.metricsIcon, {width: 25}]}></Image>
+              </View>
+              <View style={{flexDirection: 'row', alignItems: 'baseline'}}>
+                <Text style={[styles.metricHours, {fontSize: 17}]}>0:26</Text>
+                <Text style={[styles.metricHours, {fontSize: 10, paddingLeft: 2}]}>hr</Text>
+              </View>
+            </View>
+            <Text style={{color: '#595959'}}>Trend</Text>  
+          </View>
         </View>
       </View>
       <View style={styles.tableControl} >
@@ -81,7 +117,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 15,
-    paddingVertical: 10,
+    paddingVertical: 20,
     width: windowWidth,
   },
   iconContainer: {
@@ -101,29 +137,73 @@ const styles = StyleSheet.create({
   headerMorningText: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 35,
+    fontSize: 29,
     includeFontPadding: false,
-    textAlignVertical: 'center',
   },
   headerNameText: {
     color: 'black',
     fontWeight: '400',
-    fontSize: 18,
+    fontSize: 16,
     includeFontPadding: false,
-    textAlignVertical: 'center',
     textShadowColor: 'rgba(0, 0, 0, 0.25)',
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 1,
   },
-  quickMetrics: {
-    width: windowWidth,
-    backgroundColor: 'orange',
+  metricsContainer: {
+    width: '90%',
+    backgroundColor: '#d8e4e8',
+    borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
+    overflow: 'hidden',
+    paddingBottom: 20,
   },
-  metrics: {
+  metricHeaderText: {
+    width: '90%',
+    color: 'black',
+    textAlign: 'center',
+    fontWeight: 600,
+    fontSize: 25,
+    paddingVertical: 8,
+    borderBottomColor: '#595959',
+    borderBottomWidth: 0.5,
+    includeFontPadding: false,
+    textAlignVertical: 'center',
+    marginBottom: 8,
+    textShadowColor: 'rgba(0, 0, 0, 0.25)',
+    textShadowOffset: { width: 0.5, height: 0.5 },
+    textShadowRadius: 0.5,
+  },
+  metricValuesContainer: {
     flexDirection: 'row',
-    backgroundColor: 'yellow',
+    justifyContent: 'space-evenly',
+    width: '100%',
+  },
+  metricValue: { 
+    backgroundColor: '#e4ecef',
+    padding: 5,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  metricIconContainer: {
+    backgroundColor: 'white',
+    borderRadius: 60,
+    width: 40,
+    height: 40,
+    marginRight: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+  },
+  metricsIcon: {
+    width: 35,
+    height: 35,
+    resizeMode: 'contain',
+  },
+  metricHours: {
+    fontWeight: 700,
   },
   table: {
     backgroundColor: 'blue', 
