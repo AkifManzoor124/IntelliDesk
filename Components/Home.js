@@ -71,7 +71,8 @@ export default function Home() {
           </View>
         </View>
       </View>
-      <View style={styles.tableControl} >
+
+      <View style={styles.tableAnimation} >
         <View style={styles.slider}>
 
           <View style={{justifyContent:'center', flexDirection:'row', top: pos*75}} >
@@ -88,32 +89,38 @@ export default function Home() {
             <View style={[styles.standingDeskLegBottom, styles.standingDesk, {right: 2.5}]}/>
           </View>
 
-          <View style={styles.table} >
+          <View style={{justifyContent:'space-between', flexDirection:'row'}}>
+            <View style={[styles.standingDeskLegfeet, styles.standingDesk]}/>
+            <View style={[styles.standingDeskLegfeet, styles.standingDesk]}/>
+          </View>
+
+          <View style={styles.userTable} >
+            <Text style={{textAlign: 'center'}}> Kumberly's Standing Desk </Text>
             <Text> Bluetooth Icon </Text>
-            <Text> Kumberly's Standing Desk </Text>
           </View>
 
-          {/* <Text> {pos*75} </Text> */}
-
-          <Slider
-            style={{width: 200, height: 40, left: '20%'}}
-            minimumValue={0}
-            maximumValue={1}
-            minimumTrackTintColor="#FFFFFF"
-            maximumTrackTintColor="#000000"
-            onValueChange={slideHandler}
-          />
-
-          <View style={styles.tableButtons} >
-            <Text> P1 </Text>
-            <Text> P2 </Text>
-            <Text> P3 </Text>
-            <Text> P4 </Text>
-            <Text> P5 </Text>
-          </View>
         </View>
-      
       </View>
+
+      <View style={styles.heightControl}>
+        <Slider
+          style={{width: '100%', height: '25%'}}
+          minimumValue={1}
+          maximumValue={0}
+          minimumTrackTintColor="#FFFFFF"
+          maximumTrackTintColor="#000000"
+          onValueChange={slideHandler}
+        />
+
+        <View style={[styles.tableButtons, {justifyContent:'space-between'}]}>
+          <View style={styles.buttons}></View>
+          <View style={styles.buttons}></View>
+          <View style={styles.buttons}></View>
+          <View style={styles.buttons}></View>
+          <View style={styles.buttons}></View>
+        </View>
+      </View>
+
     </View>
   );
 }
@@ -222,9 +229,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: 'yellow',
   },
-  tableControl: {
-    width: 350,
-    height: 350,
+  tableAnimation: {
+    width: '90%',
     backgroundColor: "red",
     padding: 30,
     borderRadius:25
@@ -237,19 +243,41 @@ const styles = StyleSheet.create({
     height: 10,
   },
   standingDeskLegTop: {
-    width: 7,
+    width: 10,
     height: 75,
   },
   standingDeskLegBottom: {
-    width: 15,
-    height: 75,
-    borderRadius: 5
+    width: '4.5%',
+    height: 100,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5
   },
-  table: {
-    backgroundColor: 'blue', 
+  standingDeskLegfeet: {
+    width: '10%',
+    height: 10,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5
+  },
+  userTable: {
+    margin: 5,
+    backgroundColor:'grey', 
+  },
+  heightControl: {
+    width: '90%',
+    // height: '15%',
+    backgroundColor: 'peachpuff'
   },
   tableButtons: {
-    flexDirection: 'row',
-    backgroundColor: 'green',
+    flexDirection:'row',
+    backgroundColor:'green',
+    width:'100%',
   },
+  buttons: {
+    backgroundColor:'palegreen',
+    width:50,
+    // width:'10%',
+    height:50,
+    // width:'10%',
+    borderRadius:25,
+  }
 });
