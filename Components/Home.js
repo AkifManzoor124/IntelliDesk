@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
 import { Dimensions } from 'react-native'
 
 // Import the image using require
@@ -10,7 +10,7 @@ const trendIcon = require('../assets/trend.png');
 
 import Slider from '@react-native-community/slider';
 
-export default function Home() {
+export default function Home({navigation}) {
 
   const [pos,setPos] = useState(0);
 
@@ -19,7 +19,6 @@ export default function Home() {
   }
 
   return (
-
     <View style={styles.container}>
       <View style={styles.header} >
         <View>
@@ -27,7 +26,11 @@ export default function Home() {
           <Text style={styles.headerNameText}>Kumberly Janiqua</Text>
         </View>
         <View style={styles.iconContainer}>
-          <Image source={bellIcon} style={styles.notificationIcon}/>
+          <TouchableOpacity
+          onPress={() => navigation.navigate('Notifications')}
+          >
+            <Image source={bellIcon} style={styles.notificationIcon}/>
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.metricsContainer} >
