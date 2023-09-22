@@ -71,34 +71,58 @@ export default function Home() {
           </View>
         </View>
       </View>
-      <View style={styles.tableControl} >
-        <View style={styles.table} >
-          <Text> Bluetooth Icon </Text>
-          <Text> Kumberly's Standing Desk </Text>
-        </View>
+
+      <View style={styles.tableAnimation} >
         <View style={styles.slider}>
-          <View style={{backgroundColor: 'red', flex: 0.3, borderBottomRightRadius: 50}} >
-              <Slider
-                style={{width: 200, height: 40}}
-                minimumValue={0}
-                maximumValue={1}
-                minimumTrackTintColor="#FFFFFF"
-                maximumTrackTintColor="#000000"
-                onValueChange={slideHandler}
-              />
-              <Text> {pos} </Text>
-              {/* create a standing desk with shapes and move it with a slide bar */}
+
+          <View style={{justifyContent:'center', flexDirection:'row', top: pos*75}} >
+            <View style={[styles.standingDeskTableTop, styles.standingDesk]}/>
           </View>
-          <View style={[styles.circle, {top: -150 - pos*100}]} />
-        </View>
-        <View style={styles.tableButtons} >
-          <Text> P1 </Text>
-          <Text> P2 </Text>
-          <Text> P3 </Text>
-          <Text> P4 </Text>
-          <Text> P5 </Text>
+
+          <View style={{justifyContent:'space-between', flexDirection:'row', top: pos*75}} >
+            <View style={[styles.standingDeskLegTop, styles.standingDesk, {left: '7%'}]}/>
+            <View style={[styles.standingDeskLegTop, styles.standingDesk, {right: '7%'}]}/>
+          </View>
+
+          <View style={{justifyContent:'space-between', flexDirection:'row'}}>
+            <View style={[styles.standingDeskLegBottom, styles.standingDesk, {left: '3.5%'}]}/>
+            <View style={[styles.standingDeskLegBottom, styles.standingDesk, {right: '3.5%'}]}/>
+          </View>
+
+          <View style={{justifyContent:'space-between', flexDirection:'row'}}>
+            <View style={[styles.standingDeskLegfeet, styles.standingDesk]}/>
+            <View style={[styles.standingDeskLegfeet, styles.standingDesk]}/>
+          </View>
+
+          <View style={styles.userTable} >
+            <Text style={{textAlign: 'center'}}> Kumberly's Standing Desk </Text>
+            <Text> Bluetooth Icon </Text>
+          </View>
+
         </View>
       </View>
+
+      <View style={styles.heightControl}>
+        <Slider
+          style={{width: '100%', height: '25%'}}
+          minimumValue={1}
+          maximumValue={0}
+          minimumTrackTintColor="#FFFFFF"
+          maximumTrackTintColor="#000000"
+          onValueChange={slideHandler}
+        />
+
+        <View style={[styles.tableButtons, {justifyContent:'space-between'}]}>
+          <View style={styles.buttons}></View>
+          <View style={styles.buttons}></View>
+          <View style={styles.buttons}></View>
+          <View style={styles.buttons}></View>
+          <View style={styles.buttons}></View>
+        </View>
+      </View>
+
+      <View style={{backgroundColor: 'blue', flex: 0.3}} />
+      <View style={{backgroundColor: 'red', flex: 0.3, borderBottomRightRadius: 50}} />
     </View>
   );
 }
@@ -206,19 +230,57 @@ const styles = StyleSheet.create({
   metricHours: {
     fontWeight: 700,
   },
-  table: {
-    backgroundColor: 'blue', 
+  metrics: {
+    flexDirection: 'row',
+    backgroundColor: 'yellow',
   },
-  circle: {
-    position: "relative",
-    left: windowWidth/2,
-    width: 20,
-    height: 20,
-    borderRadius: 100 / 2,
-    backgroundColor: "pink",
+  tableAnimation: {
+    width: '90%',
+    backgroundColor: "red",
+    padding: 30,
+    borderRadius:25
+  },
+  standingDesk: {
+    backgroundColor: "black",
+  },
+  standingDeskTableTop: {
+    width: '100%',
+    height: 10,
+  },
+  standingDeskLegTop: {
+    width: '2%',
+    height: 75,
+  },
+  standingDeskLegBottom: {
+    width: '3%',
+    height: 100,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5
+  },
+  standingDeskLegfeet: {
+    width: '7%',
+    height: 10,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5
+  },
+  userTable: {
+    margin: 5,
+    backgroundColor:'grey', 
+  },
+  heightControl: {
+    width: '90%',
+    height: '15%',
+    // backgroundColor: 'peachpuff'
   },
   tableButtons: {
-    flexDirection: 'row',
-    backgroundColor: 'green',
+    flexDirection:'row',
+    // backgroundColor:'green',
+    width:'100%',
   },
+  buttons: {
+    backgroundColor:'paleturquoise',
+    width:50,
+    height:50,
+    borderRadius:25,
+  }
 });
