@@ -80,13 +80,13 @@ export default function Home() {
           </View>
 
           <View style={{justifyContent:'space-between', flexDirection:'row', top: pos*75}} >
-            <View style={[styles.standingDeskLegTop, styles.standingDesk, {left: 5}]}/>
-            <View style={[styles.standingDeskLegTop, styles.standingDesk, {right: 5}]}/>
+            <View style={[styles.standingDeskLegTop, styles.standingDesk, {left: '7%'}]}/>
+            <View style={[styles.standingDeskLegTop, styles.standingDesk, {right: '7%'}]}/>
           </View>
 
           <View style={{justifyContent:'space-between', flexDirection:'row'}}>
-            <View style={[styles.standingDeskLegBottom, styles.standingDesk, {left: 2.5}]}/>
-            <View style={[styles.standingDeskLegBottom, styles.standingDesk, {right: 2.5}]}/>
+            <View style={[styles.standingDeskLegBottom, styles.standingDesk, {left: '3.5%'}]}/>
+            <View style={[styles.standingDeskLegBottom, styles.standingDesk, {right: '3.5%'}]}/>
           </View>
 
           <View style={{justifyContent:'space-between', flexDirection:'row'}}>
@@ -121,9 +121,13 @@ export default function Home() {
         </View>
       </View>
 
+      <View style={{backgroundColor: 'blue', flex: 0.3}} />
+      <View style={{backgroundColor: 'red', flex: 0.3, borderBottomRightRadius: 50}} />
     </View>
   );
 }
+
+const windowWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   container: {
@@ -239,21 +243,21 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
   },
   standingDeskTableTop: {
-    width: '105%',
+    width: '100%',
     height: 10,
   },
   standingDeskLegTop: {
-    width: 10,
+    width: '2%',
     height: 75,
   },
   standingDeskLegBottom: {
-    width: '4.5%',
+    width: '3%',
     height: 100,
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5
   },
   standingDeskLegfeet: {
-    width: '10%',
+    width: '7%',
     height: 10,
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5
@@ -264,20 +268,18 @@ const styles = StyleSheet.create({
   },
   heightControl: {
     width: '90%',
-    // height: '15%',
-    backgroundColor: 'peachpuff'
+    height: '15%',
+    // backgroundColor: 'peachpuff'
   },
   tableButtons: {
     flexDirection:'row',
-    backgroundColor:'green',
+    // backgroundColor:'green',
     width:'100%',
   },
   buttons: {
-    backgroundColor:'palegreen',
+    backgroundColor:'paleturquoise',
     width:50,
-    // width:'10%',
     height:50,
-    // width:'10%',
     borderRadius:25,
   }
 });
