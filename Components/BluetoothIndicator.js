@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, View, Image, Text } from 'react-native';
 
 const BluetoothConnected = require('../assets/BluetoothConnected.png');
 const BluetoothDisconnected = require('../assets/BluetoothDisconnected.png');
@@ -20,10 +20,15 @@ export default function Bluetooth () {
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 50,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '50%',
+
   },
   bluetoothIndicatorImage: {
     width: 50,
-    height: 25,
+    height: 50,
+    marginBottom: 10,
   },
 });
