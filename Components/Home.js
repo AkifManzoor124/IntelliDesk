@@ -3,6 +3,7 @@ import {
   StyleSheet, Text, View, Image, Dimensions,
 } from 'react-native';
 import Slider from '@react-native-community/slider';
+import BluetoothIndicator from './BluetoothIndicator';
 
 // Import the image using require
 const bellIcon = require('../assets/bell.png');
@@ -69,8 +70,10 @@ export default function Home () {
           </View>
         </View>
       </View>
-
-      <View style={styles.tableAnimation}>
+      <View style={styles.tableAnimation} >
+        <View style={styles.bluetoothIndicatorContainer} >
+          <BluetoothIndicator style={{ width: 40, height: 15 }} />
+        </View>
         <View style={styles.slider}>
 
           <View style={{ justifyContent: 'center', flexDirection: 'row', top: pos * 75 }}>
@@ -92,11 +95,9 @@ export default function Home () {
             <View style={[styles.standingDeskLegfeet, styles.standingDesk]} />
           </View>
 
-          <View style={styles.userTable}>
-            <Text style={{ textAlign: 'center' }}> {"Kumberly's Standing Desk"} </Text>
-            <Text> Bluetooth Icon </Text>
+          <View style={styles.userTable} >
+            <Text style={{textAlign: 'center'}}> Kumberly's Standing Desk </Text>
           </View>
-
         </View>
       </View>
 
@@ -233,10 +234,18 @@ const styles = StyleSheet.create({
   //   backgroundColor: 'yellow',
   // },
   tableAnimation: {
+    flexDirection: 'column',
     width: '90%',
     backgroundColor: 'red',
     padding: 30,
     borderRadius: 25,
+  },
+  bluetoothIndicatorContainer: {
+    flexDirection: 'row',
+    alignContent: 'flex-start',
+    padding: 2,
+    borderWidth: 5,
+    borderColor: 'black',
   },
   standingDesk: {
     backgroundColor: 'black',
