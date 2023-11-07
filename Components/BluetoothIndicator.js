@@ -20,15 +20,10 @@ export default function Bluetooth() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '50%',
-
+    borderRadius: 50,
   },
   bluetoothIndicatorImage: {
     width: 50,
-    height: 50,
-    marginBottom: 10,
+    height: 25,
   },
 });

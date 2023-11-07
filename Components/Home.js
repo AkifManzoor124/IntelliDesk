@@ -72,9 +72,7 @@ export default function Home() {
         </View>
       </View>
       <View style={styles.tableAnimation} >
-        <View style={styles.bluetoothIndicatorContainer} >
-          <BluetoothIndicator style={{ width: 40, height: 15 }} />
-        </View>
+        <BluetoothIndicator/>
         <View style={styles.slider}>
 
           <View style={{justifyContent:'center', flexDirection:'row', top: pos*75}} >
@@ -101,7 +99,6 @@ export default function Home() {
           </View>
         </View>
       </View>
-
       <View style={styles.heightControl}>
         <Slider
           style={{width: '100%', height: '25%'}}
@@ -120,7 +117,6 @@ export default function Home() {
           <View style={styles.buttons}></View>
         </View>
       </View>
-
       <View style={{backgroundColor: 'blue', flex: 0.3}} />
       <View style={{backgroundColor: 'red', flex: 0.3, borderBottomRightRadius: 50}} />
     </View>
@@ -234,19 +230,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: 'yellow',
   },
+  slider: {
+    marginTop: 10,
+  },
   tableAnimation: {
     flexDirection: 'column',
     width: '90%',
     backgroundColor: "red",
-    padding: 30,
+    padding: 20,
     borderRadius:25
-  },
-  bluetoothIndicatorContainer: {
-    flexDirection: 'row',
-    alignContent: 'flex-start',
-    padding: 2,
-    borderWidth: 5,
-    borderColor: 'black',
   },
   standingDesk: {
     backgroundColor: "black",
