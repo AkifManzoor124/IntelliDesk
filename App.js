@@ -1,23 +1,24 @@
-import React from 'react';
-import { StyleSheet, Image } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Home from './Components/Home';
 import Settings from './Components/Settings';
 
-const homeFocused = require('./assets/home_fill.png');
+const home_focused = require('./assets/home_fill.png');
 const home = require('./assets/Home_Unfill.png');
-const settingFocused = require('./assets/user.png');
+const setting_focused = require('./assets/user.png');
 const setting = require('./assets/user_unfilled.png');
 
-export default function App () {
+const Tab = createBottomTabNavigator();
+export default function App() {
   const getTabBarIcon = (route, focused, styles) => {
     let iconName;
     if (route.name === 'Home') {
-      iconName = focused ? homeFocused : home;
+      iconName = focused ? home_focused : home;
     } else if (route.name === 'Settings') {
-      iconName = focused ? settingFocused : setting;
+      iconName = focused ? setting_focused : setting;
     }
     return <Image source={iconName} style={styles.tabIcons} />;
   };
@@ -26,9 +27,9 @@ export default function App () {
 
   return (
     <NavigationContainer>
-      <Tab.Navigator
+      <Tab.Navigator 
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused }) => getTabBarIcon(route, focused, styles),
+          tabBarIcon: ({ focused, color, size }) => getTabBarIcon(route, focused, styles),
           headerShown: false,
         })}
       >
@@ -40,8 +41,14 @@ export default function App () {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   tabIcons: {
     width: 25,
     height: 25,
-  },
+  }
 });
