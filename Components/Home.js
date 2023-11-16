@@ -1,6 +1,8 @@
-import { useState } from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
-import { Dimensions } from 'react-native'
+import React, { useState } from 'react';
+import {
+  StyleSheet, Text, View, Image, Dimensions,
+} from 'react-native';
+import Slider from '@react-native-community/slider';
 
 // Import the image using require
 const bellIcon = require('../assets/bell.png');
@@ -8,94 +10,90 @@ const standingIcon = require('../assets/standing.png');
 const sittingIcon = require('../assets/sitting.png');
 const trendIcon = require('../assets/trend.png');
 
-import Slider from '@react-native-community/slider';
-
-export default function Home() {
-
-  const [pos,setPos] = useState(0);
+export default function Home () {
+  const [pos, setPos] = useState(0);
 
   const slideHandler = (sliderVal) => {
-    setPos(sliderVal)
-  }
+    setPos(sliderVal);
+  };
 
   return (
-
     <View style={styles.container}>
-      <View style={styles.header} >
+      <View style={styles.header}>
         <View>
           <Text style={styles.headerMorningText}>Good Morning,</Text>
           <Text style={styles.headerNameText}>Kumberly Janiqua</Text>
         </View>
         <View style={styles.iconContainer}>
-          <Image source={bellIcon} style={styles.notificationIcon}/>
+          <Image source={bellIcon} style={styles.notificationIcon} />
         </View>
       </View>
-      <View style={styles.metricsContainer} >
+      <View style={styles.metricsContainer}>
         <Text style={styles.metricHeaderText}>METRICS</Text>
-        <View style={styles.metricValuesContainer} >
-          <View style={styles.metricValue}> 
-            <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+        <View style={styles.metricValuesContainer}>
+          <View style={styles.metricValue}>
+            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
               <View style={styles.metricIconContainer}>
-                <Image source={standingIcon} style={[styles.metricsIcon, {width: 32}]}></Image>
+                <Image source={standingIcon} style={[styles.metricsIcon, { width: 32 }]} />
               </View>
-              <View style={{flexDirection: 'row', alignItems: 'baseline'}}>
-                <Text style={[styles.metricHours, {fontSize: 17}]}>6:26</Text>
-                <Text style={[styles.metricHours, {fontSize: 10, paddingLeft: 2}]}>hr</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'baseline' }}>
+                <Text style={[styles.metricHours, { fontSize: 17 }]}>6:26</Text>
+                <Text style={[styles.metricHours, { fontSize: 10, paddingLeft: 2 }]}>hr</Text>
               </View>
             </View>
-            <Text style={{color: '#595959'}}>Standing</Text>  
+            <Text style={{ color: '#595959' }}>Standing</Text>
           </View>
-          <View style={styles.metricValue}> 
-          <View style={{flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
-            <View style={styles.metricIconContainer}>
-                <Image source={sittingIcon} style={styles.metricsIcon}></Image>
-            </View>
-              <View style={{flexDirection: 'row', alignItems: 'baseline'}}>
-                <Text style={[styles.metricHours, {fontSize: 17}]}>2:26</Text>
-                <Text style={[styles.metricHours, {fontSize: 10, paddingLeft: 2}]}>hr</Text>
-              </View>
-            </View>
-            <Text style={{color: '#595959'}}>Sitting</Text>  
-          </View>
-          <View style={styles.metricValue}> 
-          <View style={{flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
+          <View style={styles.metricValue}>
+            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
               <View style={styles.metricIconContainer}>
-                <Image source={trendIcon} style={[styles.metricsIcon, {width: 25}]}></Image>
+                <Image source={sittingIcon} style={styles.metricsIcon} />
               </View>
-              <View style={{flexDirection: 'row', alignItems: 'baseline'}}>
-                <Text style={[styles.metricHours, {fontSize: 17}]}>0:26</Text>
-                <Text style={[styles.metricHours, {fontSize: 10, paddingLeft: 2}]}>hr</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'baseline' }}>
+                <Text style={[styles.metricHours, { fontSize: 17 }]}>2:26</Text>
+                <Text style={[styles.metricHours, { fontSize: 10, paddingLeft: 2 }]}>hr</Text>
               </View>
             </View>
-            <Text style={{color: '#595959'}}>Trend</Text>  
+            <Text style={{ color: '#595959' }}>Sitting</Text>
+          </View>
+          <View style={styles.metricValue}>
+            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+              <View style={styles.metricIconContainer}>
+                <Image source={trendIcon} style={[styles.metricsIcon, { width: 25 }]} />
+              </View>
+              <View style={{ flexDirection: 'row', alignItems: 'baseline' }}>
+                <Text style={[styles.metricHours, { fontSize: 17 }]}>0:26</Text>
+                <Text style={[styles.metricHours, { fontSize: 10, paddingLeft: 2 }]}>hr</Text>
+              </View>
+            </View>
+            <Text style={{ color: '#595959' }}>Trend</Text>
           </View>
         </View>
       </View>
 
-      <View style={styles.tableAnimation} >
+      <View style={styles.tableAnimation}>
         <View style={styles.slider}>
 
-          <View style={{justifyContent:'center', flexDirection:'row', top: pos*75}} >
-            <View style={[styles.standingDeskTableTop, styles.standingDesk]}/>
+          <View style={{ justifyContent: 'center', flexDirection: 'row', top: pos * 75 }}>
+            <View style={[styles.standingDeskTableTop, styles.standingDesk]} />
           </View>
 
-          <View style={{justifyContent:'space-between', flexDirection:'row', top: pos*75}} >
-            <View style={[styles.standingDeskLegTop, styles.standingDesk, {left: '7%'}]}/>
-            <View style={[styles.standingDeskLegTop, styles.standingDesk, {right: '7%'}]}/>
+          <View style={{ justifyContent: 'space-between', flexDirection: 'row', top: pos * 75 }}>
+            <View style={[styles.standingDeskLegTop, styles.standingDesk, { left: '7%' }]} />
+            <View style={[styles.standingDeskLegTop, styles.standingDesk, { right: '7%' }]} />
           </View>
 
-          <View style={{justifyContent:'space-between', flexDirection:'row'}}>
-            <View style={[styles.standingDeskLegBottom, styles.standingDesk, {left: '3.5%'}]}/>
-            <View style={[styles.standingDeskLegBottom, styles.standingDesk, {right: '3.5%'}]}/>
+          <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
+            <View style={[styles.standingDeskLegBottom, styles.standingDesk, { left: '3.5%' }]} />
+            <View style={[styles.standingDeskLegBottom, styles.standingDesk, { right: '3.5%' }]} />
           </View>
 
-          <View style={{justifyContent:'space-between', flexDirection:'row'}}>
-            <View style={[styles.standingDeskLegfeet, styles.standingDesk]}/>
-            <View style={[styles.standingDeskLegfeet, styles.standingDesk]}/>
+          <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
+            <View style={[styles.standingDeskLegfeet, styles.standingDesk]} />
+            <View style={[styles.standingDeskLegfeet, styles.standingDesk]} />
           </View>
 
-          <View style={styles.userTable} >
-            <Text style={{textAlign: 'center'}}> Kumberly's Standing Desk </Text>
+          <View style={styles.userTable}>
+            <Text style={{ textAlign: 'center' }}> {"Kumberly's Standing Desk"} </Text>
             <Text> Bluetooth Icon </Text>
           </View>
 
@@ -104,7 +102,7 @@ export default function Home() {
 
       <View style={styles.heightControl}>
         <Slider
-          style={{width: '100%', height: '25%'}}
+          style={{ width: '100%', height: '25%' }}
           minimumValue={1}
           maximumValue={0}
           minimumTrackTintColor="#FFFFFF"
@@ -112,17 +110,17 @@ export default function Home() {
           onValueChange={slideHandler}
         />
 
-        <View style={[styles.tableButtons, {justifyContent:'space-between'}]}>
-          <View style={styles.buttons}></View>
-          <View style={styles.buttons}></View>
-          <View style={styles.buttons}></View>
-          <View style={styles.buttons}></View>
-          <View style={styles.buttons}></View>
+        <View style={[styles.tableButtons, { justifyContent: 'space-between' }]}>
+          <View style={styles.buttons} />
+          <View style={styles.buttons} />
+          <View style={styles.buttons} />
+          <View style={styles.buttons} />
+          <View style={styles.buttons} />
         </View>
       </View>
 
-      <View style={{backgroundColor: 'blue', flex: 0.3}} />
-      <View style={{backgroundColor: 'red', flex: 0.3, borderBottomRightRadius: 50}} />
+      <View style={{ backgroundColor: 'blue', flex: 0.3 }} />
+      <View style={{ backgroundColor: 'red', flex: 0.3, borderBottomRightRadius: 50 }} />
     </View>
   );
 }
@@ -132,7 +130,7 @@ const windowWidth = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     flexDirection: 'column',
     alignItems: 'center',
   },
@@ -204,7 +202,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     width: '100%',
   },
-  metricValue: { 
+  metricValue: {
     backgroundColor: '#e4ecef',
     padding: 5,
     display: 'flex',
@@ -230,18 +228,18 @@ const styles = StyleSheet.create({
   metricHours: {
     fontWeight: 700,
   },
-  metrics: {
-    flexDirection: 'row',
-    backgroundColor: 'yellow',
-  },
+  // metrics: {
+  //   flexDirection: 'row',
+  //   backgroundColor: 'yellow',
+  // },
   tableAnimation: {
     width: '90%',
-    backgroundColor: "red",
+    backgroundColor: 'red',
     padding: 30,
-    borderRadius:25
+    borderRadius: 25,
   },
   standingDesk: {
-    backgroundColor: "black",
+    backgroundColor: 'black',
   },
   standingDeskTableTop: {
     width: '100%',
@@ -255,17 +253,17 @@ const styles = StyleSheet.create({
     width: '3%',
     height: 100,
     borderTopLeftRadius: 5,
-    borderTopRightRadius: 5
+    borderTopRightRadius: 5,
   },
   standingDeskLegfeet: {
     width: '7%',
     height: 10,
     borderTopLeftRadius: 5,
-    borderTopRightRadius: 5
+    borderTopRightRadius: 5,
   },
   userTable: {
     margin: 5,
-    backgroundColor:'grey', 
+    backgroundColor: 'grey',
   },
   heightControl: {
     width: '90%',
@@ -273,14 +271,14 @@ const styles = StyleSheet.create({
     // backgroundColor: 'peachpuff'
   },
   tableButtons: {
-    flexDirection:'row',
+    flexDirection: 'row',
     // backgroundColor:'green',
-    width:'100%',
+    width: '100%',
   },
   buttons: {
-    backgroundColor:'paleturquoise',
-    width:50,
-    height:50,
-    borderRadius:25,
-  }
+    backgroundColor: 'paleturquoise',
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+  },
 });
