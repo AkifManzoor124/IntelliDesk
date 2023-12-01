@@ -1,0 +1,12 @@
+version: '3'
+services:
+  expo:
+    build: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "19000:19000"
+      - "8081:8081"
