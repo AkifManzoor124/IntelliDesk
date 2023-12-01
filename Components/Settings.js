@@ -112,16 +112,17 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     borderRadius: 5,
     paddingVertical: 20,
-    paddingTop: 100,
+    paddingTop: 90,
+    alignItems: 'flex-start',
 
   },
   Settings: {
     fontFamily: 'Poppins-Regular',
     color: 'white',
     fontWeight: '800',
-    fontSize: 29,
+    fontSize: 40,
     includeFontPadding: false,
-    marginLeft: 5,
+    marginLeft: 15,
 
   },
   AccountInformation: {
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     includeFontPadding: false,
     marginTop: 5,
-    marginLeft: 6,
+    marginLeft: 16,
   },
   body: {
     width: '90%',

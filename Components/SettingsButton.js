@@ -33,9 +33,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-      
-        
-        
     },
     SettingsText: {
         color: 'black',
@@ -52,37 +49,28 @@ const styles = StyleSheet.create({
         backgroundColor: '#F6F6F6',
         marginLeft: 10, //make this slightly further
         height: 35,
-        
-        
-        
     },
     usernameIcon: {
         width: 15,
         height: 25,
     },
-
     Group1: {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'flex-start',
     },
-
     ArrowIcon :{
         width: 15,
         height: 25,
         
     },
-
     iconContainer1: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         width: 40, //changed to a bigger width 
-        
-        
         marginLeft: 10, //make this slightly further
         marginRight: 20,
-        
     }
 });
