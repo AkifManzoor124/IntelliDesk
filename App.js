@@ -11,6 +11,7 @@ const home = require('./assets/Home_Unfill.png');
 const settingFocused = require('./assets/user.png');
 const setting = require('./assets/user_unfilled.png');
 
+
 export default function App () {
   const getTabBarIcon = (route, focused, styles) => {
     let iconName;
