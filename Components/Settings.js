@@ -1,5 +1,4 @@
-import { Alert, Modal, StyleSheet, Text, View, Image, Pressable } from 'react-native';
-
+import React, { StyleSheet, Text, View, Image } from 'react-native';
 
 import SettingsButton from './SettingsButton';
 
@@ -13,21 +12,16 @@ const SetupGuideIcon = require('../assets/SetupGuideIcon.png');
 const SoftwareInformationIcon = require('../assets/SoftwareInformationIcon.png');
 const FirmwareInformationIcon = require('../assets/FirmwareInformationIcon.png');
 
-
-  
-export default function Settings() {
-
-  
+export default function Settings () {
   return (
 
-    
     <View style={styles.container}>
-      <View style={styles.header}> 
+      <View style={styles.header}>
         <Text style={styles.Settings}>Settings</Text>
         <Text style={styles.AccountInformation}>Account Information</Text>
       </View>
-      
-      <View style={styles.body}> 
+
+      <View style={styles.body}>
 
         <View style={styles.UpperContents}>
           <Text style={styles.LoginandSecurityText}>Login and Information</Text>
@@ -35,8 +29,7 @@ export default function Settings() {
           <SettingsButton
             title="name"
             text="Name"
-            source={UsernameIcon} 
-            
+            source={UsernameIcon}
           />
 
           <SettingsButton
@@ -52,15 +45,15 @@ export default function Settings() {
           />
 
           {/* Create components from SettingsButton for the remaining */}
-          
+
           <SettingsButton
             title="password"
             text="Password"
-            source={PasswordIcon} 
+            source={PasswordIcon}
           />
-        
-        <View style={styles.LowerContents}> 
-        
+
+        <View style={styles.LowerContents}>
+
           <View>
             <Text style={styles.SystemInformation}>System Information</Text>
             </View>
@@ -69,39 +62,39 @@ export default function Settings() {
           <SettingsButton
               title="setupguide"
               text="Setup Guide"
-              source={SetupGuideIcon}         
+              source={SetupGuideIcon}
           />
 
           <SettingsButton
             title="legalinformation"
             text="Legal Information"
-            source={LegalInformationIcon} 
+            source={LegalInformationIcon}
           />
 
           <SettingsButton
             title="softwareinformation"
             text="Software Information"
-            source={SoftwareInformationIcon} 
-          />  
+            source={SoftwareInformationIcon}
+          />
 
             <SettingsButton
             title="firmwareinformation"
             text="Firmware Information"
-            source={FirmwareInformationIcon} 
-          />  
+            source={FirmwareInformationIcon}
+          />
 
             </View>
-            
-            </View>
+          </View>
+
           <View style={styles.Deactivate}>
-          <View style={styles.DeactivateIcon}>
-            <Image source={DeactivateIcon} style={styles.DeactivateIcon}/>
+            <View style={styles.DeactivateIcon}>
+              <Image source={DeactivateIcon} style={styles.DeactivateIcon}/>
             </View>
-          <View>
+            <View>
               <Text style={styles.DeactivateText}>Deactivate</Text>
-              </View>
-        </View>
+            </View>
 
+        </View>
     </View>
   );
 }
@@ -111,16 +104,13 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     columnGap: 100,
-    
   },
   header: {
     backgroundColor: 'rgb(76,115,128)',
-    paddingTop: 30,
     borderRadius: 5,
     paddingVertical: 20,
     paddingTop: 90,
     alignItems: 'flex-start',
-
   },
   Settings: {
     fontFamily: 'Poppins-Regular',
@@ -129,7 +119,6 @@ const styles = StyleSheet.create({
     fontSize: 40,
     includeFontPadding: false,
     marginLeft: 15,
-
   },
   AccountInformation: {
     fontFamily: 'Poppins-Regular',
@@ -147,9 +136,8 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     marginLeft: 20,
     borderRadius: 10,
-    marginTop: 10, 
+    marginTop: 10,
     height: 450,
-   
   },
   LoginandSecurityText: {
     width: '90%',
@@ -166,71 +154,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-evenly',
     alignItems: 'flex-start',
-    
   },
-  Usernameline: {
-    flexDirection: 'row',
-    alignContent: 'flex-start',
-    padding: 5,
-    justifyContent: 'center',
-    
-  },
-
-
-  PhoneNumber: {
-    flexDirection: 'row',
-    alignContent: 'flex-start',
-    padding: 5,
-    justifyContent: 'space-around',
-  },
-
-  
-  PhoneNumberIcon: {
-    width: 7,
-    height: 25,
-    
-    marginLeft: 8,
-  },
-
-  Email: {
-    flexDirection: 'row',
-    alignContent: 'flex-start',
-    padding: 5,
-    justifyContent: 'space-around',
-  },
-
-  
-  EmailIcon: {
-    width: 22,
-    height: 21,
-    backgroundColor: '#F6F6F6',
-    borderRadius: 25,
-    marginLeft: 5,
-   
-    
-  },
-
-  Password: {
-    flexDirection: 'row',
-    alignContent: 'flex-start',
-    padding: 5,
-    justifyContent: 'space-around',
-  },
-
-  PassswordIcon: {
-    width: 17,
-    height: 25,
-    backgroundColor: '#F6F6F6',
-    borderRadius: 25,
-    marginLeft: 7,
-  },
-
   LowerContents: {
     display: 'flex',
     alignItems: 'flex-start',
-    
-    },
-    
+  },
   SystemInformation: {
     width: '90%',
     color: 'grey',
@@ -240,67 +168,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     marginLeft: 5,
     fontFamily: 'Poppins-Regular',
-  
-    
   },
-
-  SetupGuide: {
-    flexDirection: 'row',
-    alignContent: 'flex-start',
-    padding: 5,
-    justifyContent: 'space-around',
-    
-  },
-
-
-
-
-
-  SetupGuideIcon:{
-    width: 20,
-    height: 23,
-  },
-
-  LegalInformation: {
-    flexDirection: 'row',
-    alignContent: 'flex-start',
-    padding: 5,
-    justifyContent: 'space-around',
-  },
-
-  
-
-  LegalInformationIcon: {
-    width: 25,
-    height: 28,
-  },
-
-  SoftwareInformation: {
-    flexDirection: 'row',
-    alignContent: 'flex-start',
-    padding: 5,
-    justifyContent: 'space-around',
-  },
- 
- 
-  SoftwareInformationIcon: {
-    width: 25,
-    height: 28,
-  },
-
-  FirmwareInformation: {
-    flexDirection: 'row',
-    alignContent: 'flex-start',
-    padding: 5,
-    justifyContent: 'space-around',
-  },
-
-  
- FirmwareInformationIcon: {
-  width: 25,
-  height: 25,
-},
-
   Deactivate: {
     flexDirection: 'row',
     backgroundColor: 'white',
@@ -311,16 +179,13 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    
   },
-
-   DeactivateText: {
+  DeactivateText: {
     color: 'red',
     fontFamily: 'Poppins-Regular',
     fontSize: 20,
     fontWeight: '600',
     marginLeft: 30,
-
   },
   DeactivateIcon: {
     width: 20,
@@ -329,6 +194,5 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     backgroundColor: '#F6F6F6',
     borderRadius: 25,
-    marginLeft: 5,
   },
 });
