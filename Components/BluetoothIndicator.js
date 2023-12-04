@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { StyleSheet, View, Image, Text } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Image } from 'react-native';
 
 const BluetoothConnected = require('../assets/BluetoothConnected.png');
 const BluetoothDisconnected = require('../assets/BluetoothDisconnected.png');
 
-
-export default function Bluetooth() {
+export default function Bluetooth () {
+  // eslint-disable-next-line no-unused-vars
   const [isBluetoothEnabled, setIsBluetoothEnabled] = useState(false);
 
   return (

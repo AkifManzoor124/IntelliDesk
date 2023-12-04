@@ -94,7 +94,7 @@ export default function Home () {
           </View>
 
           <View style={styles.userTable} >
-            <Text style={{textAlign: 'center'}}> Kumberly's Standing Desk </Text>
+            <Text style={{ textAlign: 'center' }}> {'Kumberly\'s Standing Desk'}</Text>
           </View>
         </View>
       </View>
@@ -116,8 +116,8 @@ export default function Home () {
           <View style={styles.buttons} />
         </View>
       </View>
-      <View style={{backgroundColor: 'blue', flex: 0.3}} />
-      <View style={{backgroundColor: 'red', flex: 0.3, borderBottomRightRadius: 50}} />
+      <View style={{ backgroundColor: 'blue', flex: 0.3 }} />
+      <View style={{ backgroundColor: 'red', flex: 0.3, borderBottomRightRadius: 50 }} />
     </View>
   );
 }
@@ -231,9 +231,9 @@ const styles = StyleSheet.create({
   tableAnimation: {
     flexDirection: 'column',
     width: '90%',
-    backgroundColor: "red",
+    backgroundColor: 'red',
     padding: 20,
-    borderRadius:25
+    borderRadius: 25,
   },
   standingDesk: {
     backgroundColor: 'black',
