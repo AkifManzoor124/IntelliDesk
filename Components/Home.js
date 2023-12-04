@@ -3,6 +3,7 @@ import {
   StyleSheet, Text, View, Image, Dimensions,
 } from 'react-native';
 import Slider from '@react-native-community/slider';
+import BluetoothIndicator from './BluetoothIndicator';
 
 // Import the image using require
 const bellIcon = require('../assets/bell.png');
@@ -69,8 +70,8 @@ export default function Home () {
           </View>
         </View>
       </View>
-
-      <View style={styles.tableAnimation}>
+      <View style={styles.tableAnimation} >
+        <BluetoothIndicator/>
         <View style={styles.slider}>
 
           <View style={{ justifyContent: 'center', flexDirection: 'row', top: pos * 75 }}>
@@ -92,14 +93,11 @@ export default function Home () {
             <View style={[styles.standingDeskLegfeet, styles.standingDesk]} />
           </View>
 
-          <View style={styles.userTable}>
-            <Text style={{ textAlign: 'center' }}> {"Kumberly's Standing Desk"} </Text>
-            <Text> Bluetooth Icon </Text>
+          <View style={styles.userTable} >
+            <Text style={{ textAlign: 'center' }}> {'Kumberly\'s Standing Desk'}</Text>
           </View>
-
         </View>
       </View>
-
       <View style={styles.heightControl}>
         <Slider
           style={{ width: '100%', height: '25%' }}
@@ -118,7 +116,6 @@ export default function Home () {
           <View style={styles.buttons} />
         </View>
       </View>
-
       <View style={{ backgroundColor: 'blue', flex: 0.3 }} />
       <View style={{ backgroundColor: 'red', flex: 0.3, borderBottomRightRadius: 50 }} />
     </View>
@@ -228,14 +225,14 @@ const styles = StyleSheet.create({
   metricHours: {
     fontWeight: 700,
   },
-  // metrics: {
-  //   flexDirection: 'row',
-  //   backgroundColor: 'yellow',
-  // },
+  slider: {
+    marginTop: 10,
+  },
   tableAnimation: {
+    flexDirection: 'column',
     width: '90%',
     backgroundColor: 'red',
-    padding: 30,
+    padding: 20,
     borderRadius: 25,
   },
   standingDesk: {
