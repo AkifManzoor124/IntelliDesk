@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { Alert, Modal, StyleSheet, Text, View, Image, Pressable } from 'react-native';
+
 
 import SettingsButton from './SettingsButton';
 
@@ -15,7 +16,11 @@ const FirmwareInformationIcon = require('../assets/FirmwareInformationIcon.png')
 
   
 export default function Settings() {
+
+  
   return (
+
+    
     <View style={styles.container}>
       <View style={styles.header}> 
         <Text style={styles.Settings}>Settings</Text>
@@ -31,6 +36,7 @@ export default function Settings() {
             title="name"
             text="Name"
             source={UsernameIcon} 
+            
           />
 
           <SettingsButton
@@ -167,6 +173,7 @@ const styles = StyleSheet.create({
     alignContent: 'flex-start',
     padding: 5,
     justifyContent: 'center',
+    
   },
 
 
@@ -179,7 +186,7 @@ const styles = StyleSheet.create({
 
   
   PhoneNumberIcon: {
-    width: 17,
+    width: 7,
     height: 25,
     
     marginLeft: 8,

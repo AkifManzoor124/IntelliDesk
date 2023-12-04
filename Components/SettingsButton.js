@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, } from 'react-native';
 
 const ArrowIcon = require('../assets/ArrowIcon.png');
 
@@ -16,6 +16,7 @@ export default function SettingsButton( {title, text, source} ) {
             </View>
             <View style={styles.iconContainer1}>
                 <Image source={ArrowIcon} style={styles.ArrowIcon}/>
+         
             </View>
         </View>
     );
