@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import {
-  StyleSheet, Text, View, Image, Dimensions,
-} from 'react-native';
-import Slider from '@react-native-community/slider';
+import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import BluetoothIndicator from './BluetoothIndicator';
+import Slider from '@react-native-community/slider';
 
 // Import the image using require
 const bellIcon = require('../assets/bell.png');
@@ -71,7 +69,7 @@ export default function Home () {
         </View>
       </View>
       <View style={styles.tableAnimation} >
-        <BluetoothIndicator/>
+          <BluetoothIndicator />
         <View style={styles.slider}>
 
           <View style={{ justifyContent: 'center', flexDirection: 'row', top: pos * 75 }}>
