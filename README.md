@@ -46,11 +46,3 @@ Follow these steps to run the program on your computer.
         - Scan QR Code for Application Rendering.
 
 Note: Problems may Arise in the process of running the programs, that's why it is imperative to always check tools and necessary files needed for the emulation of the Application. 
-
-
-    
-
-
-
-
-
