@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Image, PermissionsAndroid, Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -13,6 +13,9 @@ const settingFocused = require('./assets/user.png');
 const setting = require('./assets/user_unfilled.png');
 
 const manager = new BleManager();
+let connecting = false;
+const SERVICE_UUID = '4fafc201-1fb5-459e-8fcc-c5c9c331914b';
+const CHARACTERISTIC_UUID = 'beb5483e-36e1-4688-b7f5-ea07361b26a8';
 
 const requestBluetoothPermission = async () => {
   if (Platform.OS === 'ios') {
@@ -29,7 +32,7 @@ const requestBluetoothPermission = async () => {
       const result = await PermissionsAndroid.requestMultiple([
         PermissionsAndroid.PERMISSIONS.BLUETOOTH_SCAN,
         PermissionsAndroid.PERMISSIONS.BLUETOOTH_CONNECT,
-        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
       ]);
 
       return (
@@ -45,39 +48,100 @@ const requestBluetoothPermission = async () => {
   return false;
 };
 
-function scanAndConnect() {
-  console.log('hello');
-  manager.startDeviceScan(null, {allowDuplicates: false} , (error, device) => {
+const scanAndConnect = async () => {
+  if (connecting) {
+    console.log('Connection is already in progress. Skipping additional attempts.');
+    return;
+  }
+
+  console.log('Starting Scan of Bluetooth device');
+
+  manager.startDeviceScan([SERVICE_UUID], { allowDuplicates: false }, (error, device) => {
     if (error) {
-      console.log('Error: ');
-      // Handle error (scanning will be stopped automatically)
-      console.log(error);
+      console.log('Error during scanning:');
+      console.error(error);
       return;
     }
 
-    // Check if it is a device you are looking for based on advertisement data
-    // or other criteria.
-    if (device.name === 'TI BLE Sensor Tag' || device.name === 'SensorTag') {
-      // Stop scanning as it's not necessary if you are scanning for one device.
-      manager.stopDeviceScan();
+    console.log('Looking for StandingDesk');
+    console.log('Found: ', device.name);
 
-      // Proceed with connection.
-    }
-    console.log(device.id, device.name, device.serviceUUIDs, device.isConnectable, device.localName, device.manufacturerData);
+    console.log('Connecting to StandingDesk');
+    console.log('Device Information:', device.id, device.name, device.serviceUUIDs, device.isConnectable, device.localName, device.manufacturerData);
+
+    // Stop scanning before connecting
+    manager.stopDeviceScan();
+
+    connecting = true;
+
+    manager.connectToDevice(device.id)
+      .then(async (connectedDevice) => {
+        // Handle successful connection
+        console.log('Connected to device:', connectedDevice.name);
+
+        // Read more information about the connected device
+        console.log('Connected Device Info:', connectedDevice.id, connectedDevice.serviceUUIDs, connectedDevice.serviceData);
+
+        const isConnected = await manager.isDeviceConnected(connectedDevice.id);
+        console.log('StandingDesk connected:', isConnected);
+
+        await manager.discoverAllServicesAndCharacteristicsForDevice(device.id)
+          .then((services) => {
+            console.log('Reading Services - First Method: ', services);
+          })
+          .catch((readError) => {
+            // Handle connection error
+            console.log('Service read error:', readError);
+            connecting = false;
+          });
+
+        await manager.servicesForDevice(device.id)
+          .then((services) => {
+            console.log('Reading Services', services);
+          })
+          .catch((readError) => {
+            // Handle connection error
+            console.log('Service read error:', readError);
+            connecting = false;
+          });
+
+        await manager.readCharacteristicForDevice(device.id, SERVICE_UUID, CHARACTERISTIC_UUID)
+          .then((services) => {
+            console.log('Reading Characteristic: ', services);
+          })
+          .catch((readError) => {
+            // Handle connection error
+            console.log('Characteristic read error:', readError);
+            connecting = false;
+          });
+
+        connecting = false;
+      })
+      .catch((connectError) => {
+        // Handle connection error
+        console.log('Connection error:', connectError);
+        connecting = false;
+      });
   });
-}
+};
 
 export default function App () {
   useEffect(() => {
-    requestBluetoothPermission();
-    const subscription = manager.onStateChange(state => {
-      if (state === 'PoweredOn') {
-        console.log(state);
-        scanAndConnect();
-        subscription.remove();
-      }
-    }, true);
-    return () => subscription.remove();
+    const initBluetooth = async () => {
+      await requestBluetoothPermission();
+
+      const subscription = manager.onStateChange(async (state) => {
+        if (state === 'PoweredOn') {
+          console.log(state);
+          await scanAndConnect();
+          subscription.remove();
+        }
+      }, true);
+
+      return () => subscription.remove();
+    };
+
+    initBluetooth();
   }, []);
 
   const getTabBarIcon = (route, focused, styles) => {
@@ -113,3 +177,30 @@ const styles = StyleSheet.create({
     height: 25,
   },
 });
+
+// console.log('Reading Characteristic');
+// await connectedDevice.readCharacteristicForService(SERVICE_UUID, CHARACTERISTIC_UUID)
+//   .then((characteristic) => {
+//     console.log('Read characteristic:', characteristic);
+//   })
+//   .catch((readError) => {
+//     console.log('Error reading characteristic:', readError);
+//   });
+
+// await connectedDevice.discoverAllServicesAndCharacteristics()
+//   .then((services) => {
+//     console.log('Reading services and chars');
+//     console.log(services);
+//   })
+//   .catch((error) => {
+//     // Handle connection error
+//     console.log('Connection error:', error);
+//   });
+
+// await manager.discoverAllServicesAndCharacteristicsForDevice(device.id)
+//   .then((characteristic) => {
+//     console.log('Read discoverAllServicesAndCharacteristicsForDevice:', characteristic);
+//   })
+//   .catch((readError) => {
+//     console.log('Error discoverAllServicesAndCharacteristicsForDevice:', readError);
+//   });
